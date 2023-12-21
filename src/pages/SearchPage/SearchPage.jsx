@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import ResultList from "../../components/ResultList/ResultList";
 
-const SearchPage = (prop) => {
+const SearchPage = () => {
   const [resultList, setResultList] = useState([]);
 
-  async function Search() {
-    console.log("");
-  }
+  const handleSearchResults = (results) => {
+    setResultList(results);
+  };
 
   return (
     <div>
       <p>Search</p>
-      <SearchBar />
+      <SearchBar onSearchResults={handleSearchResults} />
+      <ResultList results={resultList} />
     </div>
   );
 };
