@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const SearchBar = ({ onSearchResults }) => {
   const [search, setSearch] = useState("");
@@ -11,7 +11,6 @@ const SearchBar = ({ onSearchResults }) => {
         `https://www.googleapis.com/books/v1/volumes?q=${search}`
       );
       onSearchResults(response.data.items);
-      console.log("Google Api Data:", response);
     } catch (error) {
       console.warn("Error in fetching Google data in SearchBar :", error);
     }
