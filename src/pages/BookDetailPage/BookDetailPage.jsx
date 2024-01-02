@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Book from "../../components/Book/Book";
 import { useParams } from "react-router-dom";
+import ReviewList from "../../components/ReviewList/ReviewList";
 
 const BookDetailPage = ({}) => {
   const [book, setBook] = useState(null);
@@ -15,6 +16,7 @@ const BookDetailPage = ({}) => {
     <div>
       <h2>Book Details</h2>
       {book && <Book bookId={bookId} result={book} />}
+      <ReviewList bookId={bookId} />
     </div>
   );
 };
