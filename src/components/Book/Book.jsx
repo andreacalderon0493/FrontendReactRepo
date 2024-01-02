@@ -1,9 +1,16 @@
-import { useParams } from "react-router-dom";
-
-const Book = ({ bookId }) => {
+const Book = ({ bookId, result }) => {
   return (
     <div>
-      <h1>{bookId}</h1>
+      <img
+        src={result.volumeInfo.imageLinks?.thumbnail}
+        alt={result.volumeInfo.title}
+      />
+      <p>Title: {result.volumeInfo.title || "N/A"}</p>
+      <p>Author: {result.volumeInfo.authors?.join(", ") || "N/A"}</p>
+      <p>
+        Description:{" "}
+        {result.volumeInfo.description || "No description available."}
+      </p>
     </div>
   );
 };
