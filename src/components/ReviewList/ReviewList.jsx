@@ -47,12 +47,12 @@ const ReviewList = ({ bookId }) => {
         },
       });
       if (response.data) {
-        setReviews([...reviews, response.data]);
+        fetchReviews();
       }
       setReviewText("");
       setRating(0);
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error.response);
     }
   };
 

@@ -15,6 +15,7 @@ import Footer from "./components/Footer/Footer";
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import BookDetailPage from "./pages/BookDetailPage/BookDetailPage";
+import FavoritesPage from "./pages/FavoritePage/FavoritesPage";
 
 function App() {
   return (
@@ -42,6 +43,14 @@ function App() {
           element={
             <PrivateRoute>
               <BookDetailPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <PrivateRoute>
+              <FavoritesPage />
             </PrivateRoute>
           }
         />
