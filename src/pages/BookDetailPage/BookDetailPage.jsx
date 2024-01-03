@@ -9,7 +9,6 @@ const BookDetailPage = ({}) => {
   const [book, setBook] = useState(null);
   const { bookId } = useParams();
   const [user, token] = useAuth();
-  console.log(token);
   const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {
@@ -19,7 +18,6 @@ const BookDetailPage = ({}) => {
   }, [bookId]);
 
   const toggleFavorite = async () => {
-    console.log(token);
     try {
       const url = `https://localhost:5001/api/Favorites`;
 
