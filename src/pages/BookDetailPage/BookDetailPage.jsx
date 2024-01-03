@@ -9,6 +9,7 @@ const BookDetailPage = ({}) => {
   const [book, setBook] = useState(null);
   const { bookId } = useParams();
   const [user, token] = useAuth();
+  const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${bookId}`)
@@ -18,8 +19,10 @@ const BookDetailPage = ({}) => {
 
   const toggleFavorite = async () => {
     try {
+      const url = `https://localhost:5001/api/Favorites`;
+
       await axios.post(
-        `https://localhost:5001/api/BookDetails/${bookId}/ToggleFavorite`,
+        url,
         {},
         {
           headers: {
@@ -27,24 +30,9 @@ const BookDetailPage = ({}) => {
           },
         }
       );
-      // Refresh the book details after toggling the favorite status
-      fetchBookDetails();
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  };
 
-  const fetchBookDetails = async () => {
-    try {
-      let response = await axios.get(
-        `https://localhost:5001/api/BookDetails/${bookId}`,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
-      setBook(response.data);
+      // Toggle the favorite status
+      setIsFavorited(!isFavorited);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -55,7 +43,7 @@ const BookDetailPage = ({}) => {
       <h2>Book Details</h2>
       {book && (
         <button onClick={toggleFavorite}>
-          {book.IsFavorited ? "Remove from Favorites" : "Add to Favorites"}
+          {book.isFavorited ? "Remove from Favorites" : "Add to Favorites"}
         </button>
       )}
       {book && <Book bookId={bookId} result={book} />}
