@@ -9,6 +9,7 @@ const BookDetailPage = ({}) => {
   const [book, setBook] = useState(null);
   const { bookId } = useParams();
   const [user, token] = useAuth();
+  console.log(token);
   const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {
@@ -18,18 +19,20 @@ const BookDetailPage = ({}) => {
   }, [bookId]);
 
   const toggleFavorite = async () => {
+    console.log(token);
     try {
       const url = `https://localhost:5001/api/Favorites`;
 
-      await axios.post(
-        url,
-        {},
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      const data = {
+        bookId: bookId,
+        title: book.volumeInfo.title,
+        thumbnailUrl: book.volumeInfo.imageLinks?.thumbnail || "",
+      };
+      await axios.post(url, data, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
 
       // Toggle the favorite status
       setIsFavorited(!isFavorited);
