@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 const ReviewList = ({ bookId }) => {
   const [user, token] = useAuth();
   const [reviews, setReviews] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
 
   useEffect(() => {
     fetchReviews();
@@ -21,6 +22,7 @@ const ReviewList = ({ bookId }) => {
         }
       );
       setReviews(response.data.reviews);
+      setAverageRating(response.data.average);
       console.log(response);
     } catch (error) {
       console.log(error.response.data);
@@ -28,15 +30,14 @@ const ReviewList = ({ bookId }) => {
   };
 
   return (
-    <div>
-      <h2>Reviews</h2>
+    <div className="flex-container">
+      <h2>Average Rating: {averageRating}</h2>
+      <h2>User Reviews</h2>
       {reviews.map((review) => (
         <div key={review.id}>
-          <p>User: {review.user.username}</p>
-          <p>Rating: {review.rating}</p>
-          <p>Is Favorite: {review.isFavorite ? "Yes" : "No"}</p>
+          <p>User: {review.user.userName}</p>
           <p>Review: {review.text}</p>
-          <p>Average: {review.average}</p>
+          <p>Rating (1- 5): {review.rating}</p>
         </div>
       ))}
     </div>
