@@ -31,8 +31,8 @@ const FavoritesList = () => {
     <div>
       {favorites.map((favorite) => (
         <div key={favorite.id}>
-          <img src={favorite.thumbnailUrl} />
           <h2>{favorite.title}</h2>
+          <img src={favorite.thumbnailUrl} />
         </div>
       ))}
     </div>

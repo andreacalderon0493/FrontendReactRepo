@@ -1,0 +1,14 @@
+button {
+    background: darkslategrey;
+    color: white;
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid darkslategrey;
+}
+.flex-item {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    width: 400px;
+}
+

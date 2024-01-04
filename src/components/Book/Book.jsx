@@ -1,16 +1,18 @@
+import "./Book.css";
+
 const Book = ({ bookId, result }) => {
   return (
-    <div>
+    <div className="book">
       <img
         src={result.volumeInfo.imageLinks?.thumbnail}
         alt={result.volumeInfo.title}
       />
-      <p>Title: {result.volumeInfo.title || "N/A"}</p>
-      <p>Author: {result.volumeInfo.authors?.join(", ") || "N/A"}</p>
-      <p>
+      <h2>Title: {result.volumeInfo.title || "N/A"}</h2>
+      <h3>Author: {result.volumeInfo.authors?.join(", ") || "N/A"}</h3>
+      <div>
         Description:{" "}
         {result.volumeInfo.description || "No description available."}
-      </p>
+      </div>
     </div>
   );
 };

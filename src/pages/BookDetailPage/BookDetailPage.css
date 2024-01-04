@@ -1,0 +1,10 @@
+.bookDetail {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 10px;
+    margin: 15px;
+    border: 5px;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ResultList from "../../components/ResultList/ResultList";
+import "./SearchPage.css";
 
 const SearchPage = () => {
   const [resultList, setResultList] = useState([]);
@@ -12,7 +13,7 @@ const SearchPage = () => {
 
   return (
     <div>
-      <p>Search</p>
+      <p>Search Your Favorite Books Below!</p>
       <SearchBar onSearchResults={handleSearchResults} />
       <ResultList results={resultList} />
     </div>

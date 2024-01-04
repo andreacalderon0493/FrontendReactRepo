@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import "./SearchBar.css";
 
 const SearchBar = ({ onSearchResults }) => {
   const [search, setSearch] = useState("");
@@ -18,8 +19,8 @@ const SearchBar = ({ onSearchResults }) => {
 
   return (
     <form onSubmit={fetchSearch}>
-      <div>
-        <label>Search for Books</label>
+      <div className="flex-item">
+        <label className="flex-item">Search for Books</label>
         <input value={search} onChange={(e) => setSearch(e.target.value)} />
         <button type="submit">Submit</button>
       </div>

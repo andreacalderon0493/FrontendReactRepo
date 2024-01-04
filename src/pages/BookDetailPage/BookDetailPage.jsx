@@ -4,6 +4,7 @@ import Book from "../../components/Book/Book";
 import ReviewList from "../../components/ReviewList/ReviewList";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import "./BookDetailPage.css";
 
 const BookDetailPage = ({}) => {
   const [book, setBook] = useState(null);
@@ -40,7 +41,7 @@ const BookDetailPage = ({}) => {
   };
 
   return (
-    <div>
+    <div className="bookDetail">
       <h2>Book Details</h2>
       {book && (
         <button onClick={toggleFavorite}>
