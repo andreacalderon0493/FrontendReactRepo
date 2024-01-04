@@ -16,10 +16,17 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/favorites">Favorites</Link>
+          <Link
+            to="/favorites"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            Favorites
+          </Link>
         </li>
         <li>
-          <Link to="/search">Search</Link>
+          <Link to="/search" style={{ textDecoration: "none", color: "white" }}>
+            Search
+          </Link>
         </li>
         <li>
           {user ? (
